@@ -73186,12 +73186,13 @@ selectedTab:'tb_popular'};return _this;
 return(
 _react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:36}},
 _react3.default.createElement(_reactNative.Navigator,{
+
 initialRoute:{
 component:_Boy2.default},
 
 renderScene:function renderScene(route,navigator){
 var Component=route.component;
-return _react3.default.createElement(Component,_extends({navigator:navigator},route.params,{__source:{fileName:_jsxFileName,lineNumber:43}}));
+return _react3.default.createElement(Component,_extends({navigator:navigator},route.params,{__source:{fileName:_jsxFileName,lineNumber:44}}));
 },__source:{fileName:_jsxFileName,lineNumber:37}})));
 
 
@@ -78704,6 +78705,7 @@ var _reactNative=require(42 /* react-native */);
 
 
 
+var _NavigationBar=require(568 /* ../src/components/NavigationBar */);var _NavigationBar2=_interopRequireDefault(_NavigationBar);
 var _Girl=require(411 /* ./Girl */);var _Girl2=_interopRequireDefault(_Girl);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={Boy:{displayName:'Boy'}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:'/Users/mac/Desktop/StudyWork/StudyDemo/ReactNative/SelfProject/HotCodeGithub/demos/Boy.js',components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}var Boy=_wrapComponent('Boy')(function(_Component){_inherits(Boy,_Component);
 
 
@@ -78715,14 +78717,22 @@ word:''};return _this;
 }_createClass(Boy,[{key:'render',value:function render()
 {var _this2=this;
 return(
-_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:31}},
-_react3.default.createElement(_reactNative.Text,{style:styles.text,__source:{fileName:_jsxFileName,lineNumber:32}},'I am boy'),
+_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:32}},
+_react3.default.createElement(_NavigationBar2.default,{
+title:'Boy',
+statusBar:{
+backgroundColor:'red',
+barStyle:'light-content'},__source:{fileName:_jsxFileName,lineNumber:33}}),
+
+
+_react3.default.createElement(_reactNative.Text,{style:styles.text,__source:{fileName:_jsxFileName,lineNumber:40}},'I am boy'),
 
 _react3.default.createElement(_reactNative.Text,{style:styles.text,onPress:function onPress(){
 {}
 _this2.props.navigator.push({
 title:'女孩',
 component:_Girl2.default,
+
 params:{
 word:'一只玫瑰',
 onCallback:function onCallback(word){
@@ -78732,8 +78742,8 @@ word:word});
 }}});
 
 
-},__source:{fileName:_jsxFileName,lineNumber:34}},'\u9001\u5973\u5B69\u4E00\u652F\u73AB\u7470'),
-_react3.default.createElement(_reactNative.Text,{style:styles.text,__source:{fileName:_jsxFileName,lineNumber:49}},this.state.word)));
+},__source:{fileName:_jsxFileName,lineNumber:42}},'\u9001\u5973\u5B69\u4E00\u652F\u73AB\u7470'),
+_react3.default.createElement(_reactNative.Text,{style:styles.text,__source:{fileName:_jsxFileName,lineNumber:58}},this.state.word)));
 
 
 }}]);return Boy;}(_react2.Component));exports.default=Boy;
@@ -78742,13 +78752,134 @@ _react3.default.createElement(_reactNative.Text,{style:styles.text,__source:{fil
 var styles=_reactNative.StyleSheet.create({
 container:{
 flex:1,
-backgroundColor:'gray',
-justifyContent:'center',
-alignItems:'center'},
+backgroundColor:'gray'},
+
+
 
 text:{
 fontSize:20}});
 }, 410, null, "HotCodeGithub/demos/Boy.js");
+__d(/* HotCodeGithub/src/components/NavigationBar.js */function(global, require, module, exports) {
+
+
+
+
+
+
+
+
+'use strict';Object.defineProperty(exports,"__esModule",{value:true});var _react2=require(12 /* react */);var _react3=_interopRequireDefault(_react2);var _index=require(414 /* ./../../node_modules/react-transform-hmr/lib/index.js */);var _index2=_interopRequireDefault(_index);var _extends=Object.assign||function(target){for(var i=1;i<arguments.length;i++){var source=arguments[i];for(var key in source){if(Object.prototype.hasOwnProperty.call(source,key)){target[key]=source[key];}}}return target;};var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();var _class,_temp,_jsxFileName='/Users/mac/Desktop/StudyWork/StudyDemo/ReactNative/SelfProject/HotCodeGithub/src/components/NavigationBar.js';
+
+
+
+
+var _reactNative=require(42 /* react-native */);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var _components={NavigationBar:{displayName:'NavigationBar'}};var _node_modulesReactTransformHmrLibIndexJs2=(0,_index2.default)({filename:'/Users/mac/Desktop/StudyWork/StudyDemo/ReactNative/SelfProject/HotCodeGithub/src/components/NavigationBar.js',components:_components,locals:[module],imports:[_react3.default]});function _wrapComponent(id){return function(Component){return _node_modulesReactTransformHmrLibIndexJs2(Component,id);};}
+
+
+
+
+
+
+
+var NAV_BAR_HEIGHT_ANDROID=50;
+var NAV_BAR_HEIGHT_IOS=44;
+var STATUS_BAR_HEIGHT=20;
+var STATUSBARSHAPE={
+backgroundColor:_react2.PropTypes.string,
+barStyle:_react2.PropTypes.oneOf(['default','light-content']),
+hidden:_react2.PropTypes.bool};var NavigationBar=_wrapComponent('NavigationBar')((_temp=_class=function(_Component){_inherits(NavigationBar,_Component);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function NavigationBar(props){_classCallCheck(this,NavigationBar);var _this=_possibleConstructorReturn(this,(NavigationBar.__proto__||Object.getPrototypeOf(NavigationBar)).call(this,
+props));
+
+_this.state={
+title:'',
+hide:false};return _this;
+
+}_createClass(NavigationBar,[{key:'render',value:function render()
+{
+console.log(this.props);
+
+
+var statusBar=_react3.default.createElement(_reactNative.View,{style:[styles.statusBar,this.props.statusBar],__source:{fileName:_jsxFileName,lineNumber:73}},_react3.default.createElement(_reactNative.StatusBar,_extends({},this.props.statusBar,{__source:{fileName:_jsxFileName,lineNumber:73}})));
+
+var titleView=this.props.titleView?this.props.titleView:_react3.default.createElement(_reactNative.Text,{style:styles.title,__source:{fileName:_jsxFileName,lineNumber:75}},this.props.title);
+var content=_react3.default.createElement(_reactNative.View,{style:styles.navBar,__source:{fileName:_jsxFileName,lineNumber:76}},
+
+this.props.leftButton,
+
+_react3.default.createElement(_reactNative.View,{style:styles.titleViewContainer,__source:{fileName:_jsxFileName,lineNumber:80}},
+titleView),
+
+
+this.props.rightButton);
+
+return(
+_react3.default.createElement(_reactNative.View,{style:[styles.container,this.props.style],__source:{fileName:_jsxFileName,lineNumber:87}},
+statusBar,
+content));
+
+
+}}]);return NavigationBar;}(_react2.Component),_class.propTypes={style:_reactNative.View.propTypes.style,title:_react2.PropTypes.string,titleView:_react2.PropTypes.element,hide:_react2.PropTypes.bool,leftButton:_react2.PropTypes.element,rightButton:_react2.PropTypes.element,statusBar:_react2.PropTypes.shape(STATUSBARSHAPE)},_class.defaultProps={statusBar:{barStyle:'light-content',hidden:true}},_temp));exports.default=NavigationBar;
+
+
+var styles=_reactNative.StyleSheet.create({
+statusBar:{
+height:_reactNative.Platform.OS==='ios'?STATUS_BAR_HEIGHT:0},
+
+titleViewContainer:{
+justifyContent:'center',
+alignItems:'center',
+position:'absolute',
+left:40,
+right:40,
+bottom:0,
+top:0},
+
+title:{
+fontSize:20,
+color:'#fff'},
+
+navBar:{
+flexDirection:'row',
+justifyContent:'space-between',
+alignItems:'center',
+height:_reactNative.Platform.OS==='ios'?NAV_BAR_HEIGHT_IOS:NAV_BAR_HEIGHT_ANDROID,
+backgroundColor:'red'},
+
+container:{
+backgroundColor:'gray'}});
+}, 568, null, "HotCodeGithub/src/components/NavigationBar.js");
 __d(/* HotCodeGithub/demos/Girl.js */function(global, require, module, exports) {
 
 

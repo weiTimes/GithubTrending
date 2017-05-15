@@ -17,6 +17,7 @@ import {
     View,
 } from 'react-native';
 
+import NavigationBar from '../src/components/NavigationBar';
 import Girl from './Girl';
 
 export default class Boy extends Component {
@@ -29,6 +30,13 @@ export default class Boy extends Component {
     render() {
         return (
             <View style={styles.container}>
+                <NavigationBar
+                    title={'Boy'}
+                    statusBar={{
+                        backgroundColor: 'red',
+                        barStyle: 'light-content'
+                    }}
+                />
                 <Text style={styles.text}>I am boy</Text>
                 {/*点击跳转到女孩界面*/}
                 <Text style={styles.text} onPress={() => {
@@ -57,8 +65,8 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'gray',
-        justifyContent: 'center', // 主轴居中
-        alignItems: 'center' // 侧轴居中
+        // justifyContent: 'center', // 主轴居中
+        // alignItems: 'center' // 侧轴居中
     },
     text: {
         fontSize: 20
