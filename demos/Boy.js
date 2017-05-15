@@ -32,9 +32,11 @@ export default class Boy extends Component {
                 <Text style={styles.text}>I am boy</Text>
                 {/*点击跳转到女孩界面*/}
                 <Text style={styles.text} onPress={() => {
+                    {/*跳转到女孩这个组件，并且传递两个参数过去*/ }
                     this.props.navigator.push({
                         title: '女孩',
                         component: Girl,
+                        //传递参数过去
                         params: {
                             word: '一只玫瑰',
                             onCallback: (word) => {

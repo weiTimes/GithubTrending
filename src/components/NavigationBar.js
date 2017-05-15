@@ -1,4 +1,3 @@
-
 /*
  * @Author: yewei 
  * @Date: 2017-05-14 23:10:18 
@@ -7,7 +6,6 @@
  * 
  * 自定义顶部导航栏
  */
-
 
 'use strict';
 import React, {
@@ -23,8 +21,6 @@ import {
 const NAV_BAR_HEIGHT_ANDROID = 50;
 const NAV_BAR_HEIGHT_IOS = 44; // 导航栏的高度
 const STATUS_BAR_HEIGHT = 20; // 状态栏的高度
-
-
 export default class NavigationBar extends Component {
     /**
      * 定义组件的属性

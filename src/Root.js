@@ -16,12 +16,13 @@ import {
     StyleSheet,
     Text,
     View,
-    Image
+    Image,
+    Navigator // 导航组件( 路由 跳转到另一个页面 相互间传递数据 )
 } from 'react-native';
 
 import TabNavigator from 'react-native-tab-navigator'; // 底部导航栏
 
-import Boy from '../demos/Boy'; // 
+import Boy from '../demos/Boy';
 
 export default class Root extends Component {
     constructor(props) {
@@ -33,47 +34,18 @@ export default class Root extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <TabNavigator>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === 'tb_popular'} // 是否被选中
-                        selectedTitleStyle={{ color: 'red' }} // 选中时的标题颜色
-                        title="最热" // 标题
-                        renderIcon={() => <Image style={styles.tabicon} source={require('../res/images/ic_polular.png')} />} // 图片
-                        renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../res/images/ic_polular.png')} />} // 选中时的图标，选中时给图标着为红色
-                        badgeText="1"
-                        onPress={() => this.setState({ selectedTab: 'tb_popular' })}>
-                        <View style={styles.page1}></View>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === 'tb_trending'}
-                        selectedTitleStyle={{ color: 'red' }}
-                        title="趋势"
-                        renderIcon={() => <Image style={styles.tabicon} source={require('../res/images/ic_trending.png')} />}
-                        renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../res/images/ic_trending.png')} />}
-                        onPress={() => this.setState({ selectedTab: 'tb_trending' })}>
-                        <View style={styles.page2}></View>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === 'tb_favorite'} // 是否被选中
-                        selectedTitleStyle={{ color: 'red' }} // 选中时的标题颜色
-                        title="收藏" // 标题
-                        renderIcon={() => <Image style={styles.tabicon} source={require('../res/images/ic_polular.png')} />} // 图片
-                        renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../res/images/ic_polular.png')} />} // 选中时的图标，选中时给图标着为红色
-                        badgeText="1"
-                        onPress={() => this.setState({ selectedTab: 'tb_favorite' })}>
-                        <View style={styles.page1}></View>
-                    </TabNavigator.Item>
-                    <TabNavigator.Item
-                        selected={this.state.selectedTab === 'bg_my'}
-                        selectedTitleStyle={{ color: 'red' }}
-                        title="我的"
-                        renderIcon={() => <Image style={styles.tabicon} source={require('../res/images/ic_trending.png')} />}
-                        renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../res/images/ic_trending.png')} />}
-                        onPress={() => this.setState({ selectedTab: 'bg_my' })}>
-                        <View style={styles.page2}></View>
-                    </TabNavigator.Item>
-                </TabNavigator>
-            </View>
+                <Navigator
+                    //初始化路由
+                    initialRoute={{
+                        component: Boy
+                    }}
+                    renderScene={(route, navigator) => {
+                        let Component = route.component; // 获得初始化的组件
+                        return <Component navigator={navigator} {...route.params} /> // 跳转到获得的组件，并且传递相应的参数过去
+                    }}
+                ></Navigator>
+            </View >
+
         );
     }
 }
