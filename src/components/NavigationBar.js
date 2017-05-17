@@ -47,15 +47,16 @@ export default class NavigationBar extends Component {
     }
     /**
      * 用户没有传入的属性，有一个默认值
+     * 也就是不是用户必须传入的参数
      * 
      * @static
      * 
      * @memberof NavigationBar
      */
     static defaultProps = {
-        statusBar: { // 这里没有生效？？？
+        statusBar: {
             barStyle: 'light-content',
-            hidden: true
+            // hidden: true
         }
     }
     constructor(props) {
@@ -66,10 +67,14 @@ export default class NavigationBar extends Component {
             hide: false
         };
     }
-    render() {
-        console.log(this.props);
-        // 状态栏的样式需要自己赋值 this.props.statusBar
-        let statusBar = <View style={[styles.statusBar, this.props.statusBar]}><StatusBar {...this.props.statusBar} /></View>; // 状态栏
+
+    /**
+     * 渲染核心区域
+     * 
+     * 
+     * @memberof NavigationBar
+     */
+    _renderContent() {
         // 用户是否传递标题的下拉框(优先级高)
         let titleView = this.props.titleView ? this.props.titleView : <Text style={styles.title}>{this.props.title}</Text>;
         let content = (<View style={styles.navBar}>
@@ -82,10 +87,20 @@ export default class NavigationBar extends Component {
             {/*用户传递过来的右侧按钮*/}
             {this.props.rightButton}
         </View>);
+        return content;
+    }
+
+    render() {
+        // 如果有传递背景色，则将其添加到状态栏的View
+        let viewBg = this.props.statusBar ? { backgroundColor: this.props.statusBar.backgroundColor } : {};
+
+        // 状态栏的样式需要自己赋值 this.props.statusBar
+        let statusBar = <View style={[styles.statusBar, viewBg]}><StatusBar {...this.props.statusBar} /></View>; // 状态栏
+
         return (
             <View style={[styles.container, this.props.style]}>
                 {statusBar}
-                {content}
+                {this._renderContent()}
             </View>
         );
     }
@@ -113,7 +128,6 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         alignItems: 'center',
         height: Platform.OS === 'ios' ? NAV_BAR_HEIGHT_IOS : NAV_BAR_HEIGHT_ANDROID,
-        backgroundColor: 'red'
     },
     container: {
         backgroundColor: 'gray'
