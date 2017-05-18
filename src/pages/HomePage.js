@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 22:39:00 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-18 22:50:58
+ * @Last Modified time: 2017-05-18 23:23:10
  * 
  * 首页
  */
@@ -20,6 +20,7 @@ import {
 
 import TabNavigator from 'react-native-tab-navigator'; // 底部导航栏
 
+import PopularPage from './PopularPage';
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
@@ -38,7 +39,7 @@ export default class HomePage extends Component {
                     renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_polular.png')} />} // 选中时的图标，选中时给图标着为红色
                     badgeText="1"
                     onPress={() => this.setState({ selectedTab: 'tb_popular' })}>
-                    <View style={styles.page1}></View>
+                    <PopularPage />
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tb_trending'}
