@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 23:04:59 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-18 23:25:05
+ * @Last Modified time: 2017-05-19 23:28:29
  * 
  * 首页中的欢迎模块
  * 默认欢迎模块是显示
@@ -19,11 +19,15 @@ import {
     TextInput
 } from 'react-native';
 
+import ScrollableTabView from 'react-native-scrollable-tab-view';
+// ScrollableTabBar => 标签切换的效果
+
 import NavigationBar from '../components/NavigationBar';
 import DataRepository from '../expands/dao/DataRepository'; // 数据模块层
 
 const URL = `https://api.github.com/search/repositories?q=`; // q => 关键词
 const QUERY_STR = `&sort=starts`; // 查询的一个条件
+
 
 export default class PopularPage extends Component {
     constructor(props) {
@@ -78,9 +82,11 @@ export default class PopularPage extends Component {
                     title={'最热'}
                     style={{ backgroundColor: '#6495ed' }}
                 />
-                <Text style={styles.tips} onPress={() => this._onLoad()}>获取数据</Text>
-                <TextInput style={styles.input} onChangeText={text => this.text = text} />
-                <Text style={{ height: 500 }}>{this.state.result}</Text>
+                <ScrollableTabView>
+                    <Text tabLabel="React">React</Text>
+                    <Text tabLabel="Java">Java</Text>
+                    <Text tabLabel="Javascript">Javascript</Text>
+                </ScrollableTabView>
             </View>
         );
     }
