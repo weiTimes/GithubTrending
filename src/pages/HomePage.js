@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 22:39:00 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-18 23:23:10
+ * @Last Modified time: 2017-05-20 18:32:13
  * 
  * 首页
  */
@@ -33,7 +33,7 @@ export default class HomePage extends Component {
             <TabNavigator>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tb_popular'} // 是否被选中
-                    selectedTitleStyle={{ color: 'red' }} // 选中时的标题颜色
+                    selectedTitleStyle={{ color: '#2196f3' }} // 选中时的标题颜色
                     title="最热" // 标题
                     renderIcon={() => <Image style={styles.tabicon} source={require('../../res/images/ic_polular.png')} />} // 图片
                     renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_polular.png')} />} // 选中时的图标，选中时给图标着为红色
@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
         height: 22
     },
     ontabicon: {
-        tintColor: 'red' // 当被选中时，给图片着色
+        tintColor: '#2196f3' // 当被选中时，给图片着色
     },
     page1: {
         flex: 1,

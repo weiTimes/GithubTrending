@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 23:04:59 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-19 23:28:29
+ * @Last Modified time: 2017-05-20 18:30:56
  * 
  * 首页中的欢迎模块
  * 默认欢迎模块是显示
@@ -19,60 +19,17 @@ import {
     TextInput
 } from 'react-native';
 
-import ScrollableTabView from 'react-native-scrollable-tab-view';
 // ScrollableTabBar => 标签切换的效果
+import ScrollableTabView, { ScrollableTabBar } from 'react-native-scrollable-tab-view';
 
 import NavigationBar from '../components/NavigationBar';
-import DataRepository from '../expands/dao/DataRepository'; // 数据模块层
-
-const URL = `https://api.github.com/search/repositories?q=`; // q => 关键词
-const QUERY_STR = `&sort=starts`; // 查询的一个条件
-
-
+import PopularTab from '../components/PopularTab'; // 顶部tab切换的每一项
 export default class PopularPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
             result: ''
         };
-        this.dataRepository = new DataRepository(); // 初始化数据模块层的类
-
-    }
-
-    /**
-     * 拼接要查询的关键词
-     * 返回完整的api url
-     * 
-     * @param {any} key 
-     * @returns 
-     * 
-     * @memberof PopularPage
-     */
-    _getUrl(key) {
-        return URL + key + QUERY_STR;
-    }
-
-    /**
-     * 调用数据模块
-     * 根据不同关键字   
-     * 
-     * 
-     * @memberof PopularPage
-     */
-    _onLoad() {
-        let url = this._getUrl(this.text); // 用户输入的关键词
-        this.dataRepository.fetchNextRepository(url)
-            .then(result => {
-                // 将拿到的数据存到state中
-                this.setState({
-                    result: JSON.stringify(result)
-                })
-            })
-            .catch((error) => {
-                this.setState({
-                    result: JSON.stringify(error)
-                });
-            });
     }
 
     render() {
@@ -80,12 +37,18 @@ export default class PopularPage extends Component {
             <View style={styles.container}>
                 <NavigationBar
                     title={'最热'}
-                    style={{ backgroundColor: '#6495ed' }}
+                    style={{ backgroundColor: '#2196f3' }}
                 />
-                <ScrollableTabView>
-                    <Text tabLabel="React">React</Text>
-                    <Text tabLabel="Java">Java</Text>
-                    <Text tabLabel="Javascript">Javascript</Text>
+                <ScrollableTabView
+                    tabBarBackgroundColor={"#2196f3"}
+                    tabBarActiveTextColor={'mintcream'}
+                    tabBarInactiveTextColor={'mintcream'}
+                    tabBarUnderlineStyle={{ backgroundColor: '#e7e7e7', height: 2 }}
+                    renderTabBar={() => <ScrollableTabBar />} // tab切换的效果
+                >
+                    <PopularTab tabLabel="React">React</PopularTab>
+                    <PopularTab tabLabel="Java">Java</PopularTab>
+                    <PopularTab tabLabel="Javascript">Javascript</PopularTab>
                 </ScrollableTabView>
             </View>
         );
