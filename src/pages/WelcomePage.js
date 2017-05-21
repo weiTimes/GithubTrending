@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 22:31:35 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-19 22:47:36
+ * @Last Modified time: 2017-05-21 14:53:03
  * 
  * 欢迎页
  * 引导页
@@ -36,7 +36,7 @@ export default class WelcomePage extends Component {
             this.props.navigator.resetTo({
                 component: HomePage
             });
-        }, 2000);
+        }, 0);
     }
 
     /**

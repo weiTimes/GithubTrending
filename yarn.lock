@@ -2929,14 +2929,19 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+react-native-check-box@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-check-box/-/react-native-check-box-1.0.4.tgz#228507af6df59fa07b334dfd569aeb709e9ca1e6"
+
 react-native-easy-toast@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/react-native-easy-toast/-/react-native-easy-toast-1.0.5.tgz#01600a4075f45c549d61427fe48dd2edbb98628e"
 
-react-native-scrollable-tab-view@^0.6.6:
-  version "0.6.6"
-  resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.6.6.tgz#d49d21060745845e9c59e3d39a2bacd4056a8b59"
+react-native-scrollable-tab-view@^0.7.0:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/react-native-scrollable-tab-view/-/react-native-scrollable-tab-view-0.7.4.tgz#623a047cbfab35a27b8689095af524e9aac74b62"
   dependencies:
+    react-static-container "^1.0.1"
     react-timer-mixin "^0.13.3"
 
 react-native-tab-navigator@^0.3.3:
@@ -3032,6 +3037,10 @@ react-proxy@^1.1.7:
   dependencies:
     lodash "^4.6.1"
     react-deep-force-update "^1.0.0"
+
+react-static-container@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-static-container/-/react-static-container-1.0.1.tgz#694c0dd68a896b879519afb548399cc1989c9ab0"
 
 react-test-renderer@~15.4.0-rc.4:
   version "15.4.2"

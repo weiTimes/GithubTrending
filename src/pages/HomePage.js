@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 22:39:00 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-20 18:32:13
+ * @Last Modified time: 2017-05-21 15:18:31
  * 
  * 首页
  */
@@ -21,6 +21,8 @@ import {
 import TabNavigator from 'react-native-tab-navigator'; // 底部导航栏
 
 import PopularPage from './PopularPage';
+import MinePage from './Mine/MinePage';
+import AsyncStorageComponent from '../../demos/AsyncStorageComponent';
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
@@ -34,7 +36,7 @@ export default class HomePage extends Component {
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tb_popular'} // 是否被选中
                     selectedTitleStyle={{ color: '#2196f3' }} // 选中时的标题颜色
-                    title="最热" // 标题
+                    title="Popular" // 标题
                     renderIcon={() => <Image style={styles.tabicon} source={require('../../res/images/ic_polular.png')} />} // 图片
                     renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_polular.png')} />} // 选中时的图标，选中时给图标着为红色
                     badgeText="1"
@@ -48,7 +50,7 @@ export default class HomePage extends Component {
                     renderIcon={() => <Image style={styles.tabicon} source={require('../../res/images/ic_trending.png')} />}
                     renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_trending.png')} />}
                     onPress={() => this.setState({ selectedTab: 'tb_trending' })}>
-                    <View style={styles.page2}></View>
+                    <AsyncStorageComponent />
                 </TabNavigator.Item>
                 <TabNavigator.Item
                     selected={this.state.selectedTab === 'tb_favorite'} // 是否被选中
@@ -67,7 +69,7 @@ export default class HomePage extends Component {
                     renderIcon={() => <Image style={styles.tabicon} source={require('../../res/images/ic_trending.png')} />}
                     renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_trending.png')} />}
                     onPress={() => this.setState({ selectedTab: 'bg_my' })}>
-                    <View style={styles.page2}></View>
+                    <MinePage {...this.props} />
                 </TabNavigator.Item>
             </TabNavigator>
         );
