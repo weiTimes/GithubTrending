@@ -40,7 +40,7 @@ export default class PopularPage extends Component {
 
     /**
      * 加载自定义标签的数据
-     * 存储在数据库中
+     * 存储在数据库中的数据
      * 
      * @memberof CustomKeyPage
      */

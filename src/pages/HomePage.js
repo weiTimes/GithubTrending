@@ -69,6 +69,7 @@ export default class HomePage extends Component {
                     renderIcon={() => <Image style={styles.tabicon} source={require('../../res/images/ic_trending.png')} />}
                     renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_trending.png')} />}
                     onPress={() => this.setState({ selectedTab: 'bg_my' })}>
+                    {/*将navigator等传递过去*/}
                     <MinePage {...this.props} />
                 </TabNavigator.Item>
             </TabNavigator>

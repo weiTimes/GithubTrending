@@ -42,6 +42,13 @@ export default class LanguageDao {
         });
     }
 
+    /**
+     * 从默认文件中或者数据库中获取数据
+     * 
+     * @returns 
+     * 
+     * @memberof LanguageDao
+     */
     fetch() {
         return new Promise((resolve, reject) => {
             /**
@@ -57,8 +64,9 @@ export default class LanguageDao {
                      * 并且将数据返回
                      */
                     if (result) {
+                        // 解析的过程中可能会出错 try...catch来捕获异常
                         try {
-                            resolve(JSON.parse(result))
+                            resolve(JSON.parse(result)); // 解析拿到的数据并返回Promise
                         } catch (e) {
                             reject(e);
                         }
@@ -69,7 +77,7 @@ export default class LanguageDao {
                          * 加载默认的数据项
                          * 语言 || 标签
                          */
-                        let data = this.flag === FLAG_LANGUAGE.flag_key ? keys : null;
+                        let data = this.flag === FLAG_LANGUAGE.flag_key ? keys : null; // keys 文件中存储的默认数据
                         this.save(data); // 将数据保存到数据库中
                         resolve(data); // 返回Promise
                     }

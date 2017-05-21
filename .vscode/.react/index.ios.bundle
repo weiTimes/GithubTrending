@@ -80419,6 +80419,7 @@ return views;
 
 
 {var _this4=this;
+
 if(this.changeValues.length===0){
 this.props.navigator.pop();
 return;
@@ -80444,21 +80445,21 @@ onPress:function onPress(){_this4._onSave();}}]);
 
 {var _this5=this;
 var rightButton=
-_react3.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this5._onSave();},__source:{fileName:_jsxFileName,lineNumber:196}},
-_react3.default.createElement(_reactNative.View,{style:styles.save,__source:{fileName:_jsxFileName,lineNumber:197}},
-_react3.default.createElement(_reactNative.Text,{style:styles.saveText,__source:{fileName:_jsxFileName,lineNumber:198}},'\u4FDD\u5B58')));
+_react3.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this5._onSave();},__source:{fileName:_jsxFileName,lineNumber:197}},
+_react3.default.createElement(_reactNative.View,{style:styles.save,__source:{fileName:_jsxFileName,lineNumber:198}},
+_react3.default.createElement(_reactNative.Text,{style:styles.saveText,__source:{fileName:_jsxFileName,lineNumber:199}},'\u4FDD\u5B58')));
 
 
 
 return(
-_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:203}},
+_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:204}},
 _react3.default.createElement(_NavigationBar2.default,{
 title:'Custom Key',
 style:{backgroundColor:'#2196f3'},
 leftButton:_ViewUtils2.default.getLeftButton(function(){return _this5._onBack();}),
-rightButton:rightButton,__source:{fileName:_jsxFileName,lineNumber:204}}),
+rightButton:rightButton,__source:{fileName:_jsxFileName,lineNumber:205}}),
 
-_react3.default.createElement(_reactNative.ScrollView,{__source:{fileName:_jsxFileName,lineNumber:210}},
+_react3.default.createElement(_reactNative.ScrollView,{__source:{fileName:_jsxFileName,lineNumber:211}},
 this._renderLabel())));
 
 

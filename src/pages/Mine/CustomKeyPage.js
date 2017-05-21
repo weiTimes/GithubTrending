@@ -22,10 +22,10 @@ import {
 } from 'react-native';
 import CheckBox from 'react-native-check-box';
 
-import NavigationBar from '../../components/NavigationBar';
-import ViewUtils from '../../utils/ViewUtils';
-import ArrayUtils from '../../utils/ArrayUtils';
-import LanguageDao, { FLAG_LANGUAGE } from '../../expands/dao/LanguageDao';
+import NavigationBar from '../../components/NavigationBar'; // 导航栏
+import ViewUtils from '../../utils/ViewUtils'; // 渲染回退按钮的视图工具方法
+import ArrayUtils from '../../utils/ArrayUtils'; // 数组工具方法
+import LanguageDao, { FLAG_LANGUAGE } from '../../expands/dao/LanguageDao'; // 本地数据库操作层
 
 export default class CustomKeyPage extends Component {
     constructor(props) {
@@ -50,6 +50,7 @@ export default class CustomKeyPage extends Component {
     _loadData() {
         this.languageDao.fetch()
             .then(result => {
+                // 将拿到的数据更新到state中
                 this.setState({
                     dataArray: result
                 });
@@ -94,7 +95,7 @@ export default class CustomKeyPage extends Component {
     /**
      * 渲染每一列的checkbox
      * 
-     * @param {any} data 
+     * @param {any} data state中的数据
      * @returns 
      * 
      * @memberof CustomKeyPage
@@ -150,6 +151,7 @@ export default class CustomKeyPage extends Component {
          * 长度为奇数 => 一列
          */
         views.push(
+            // 最后一行
             <View key={len - 1}>
                 <View style={styles.labelView}>
                     {len % 2 === 0 ? this._renderCheckBox(this.state.dataArray[len - 2]) : null}
@@ -163,12 +165,13 @@ export default class CustomKeyPage extends Component {
 
     /**
      * 按返回键的时候
-     * 
+     *
      * 
      * @memberof CustomKeyPage
      */
     _onBack() {
-        // 如果没有作修改，直接返回
+        // 如果没有作修改，直接返回，反之，如果是不保存也是直接返回上一页，
+        // 如果是保存，则先将数据更新到数据库中，然后再返回上一页
         if (this.changeValues.length === 0) {
             this.props.navigator.pop();
             return;
