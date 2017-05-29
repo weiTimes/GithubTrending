@@ -77,10 +77,6 @@ export default class CustomKeyPage extends Component {
             this.props.navigator.pop();
             return;
         }
-        // 从数组中移除选中的项
-        for (let i = 0, len = this.changeValues.length; i < len; i++) {
-            ArrayUtils.remove(this.state.dataArray, this.changeValues[i]);
-        }
         // 将更改后的值存储(更新)到数据库中，然后返回上一页
         this.languageDao.save(this.state.dataArray);
         this.props.navigator.pop();
@@ -98,6 +94,7 @@ export default class CustomKeyPage extends Component {
     _onClick(data) {
         if (!this.isRemoveKey) {
             data.checked = !data.checked; // 记录并改变state中dataArray的值，
+
         }
         ArrayUtils.updateArray(this.changeValues, data); // 记录用户所作的修改，数组中存放着用户更改过得标签，由于changValue是数组，所以被改变了
     }

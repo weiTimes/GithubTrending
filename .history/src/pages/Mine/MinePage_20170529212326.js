@@ -49,7 +49,7 @@ export default class Mine extends Component {
             component: CustomKeyPage,
             params: {
                 ...this.props,
-                isRemoveKey: true // 用来标识将要进行的是移除标签操作
+                isRemoveKey: true // 用来标识是从移除标签进入的
             }
         });
     }

@@ -77,7 +77,6 @@ export default class CustomKeyPage extends Component {
             this.props.navigator.pop();
             return;
         }
-        // 从数组中移除选中的项
         for (let i = 0, len = this.changeValues.length; i < len; i++) {
             ArrayUtils.remove(this.state.dataArray, this.changeValues[i]);
         }

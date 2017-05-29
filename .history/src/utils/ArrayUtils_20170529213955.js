@@ -95,7 +95,6 @@ export default class ArrayUtils {
             return;
         }
         for (let i = 0, len = arr.length; i < len; i++) {
-            // 如果是数组中存在的项，则将其移除
             if (item === arr[i]) {
                 arr.splice(i, 1);
             }

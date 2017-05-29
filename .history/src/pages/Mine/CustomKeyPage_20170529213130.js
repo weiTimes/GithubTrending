@@ -77,10 +77,6 @@ export default class CustomKeyPage extends Component {
             this.props.navigator.pop();
             return;
         }
-        // 从数组中移除选中的项
-        for (let i = 0, len = this.changeValues.length; i < len; i++) {
-            ArrayUtils.remove(this.state.dataArray, this.changeValues[i]);
-        }
         // 将更改后的值存储(更新)到数据库中，然后返回上一页
         this.languageDao.save(this.state.dataArray);
         this.props.navigator.pop();

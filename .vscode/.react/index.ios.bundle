@@ -80245,17 +80245,28 @@ this.props.navigator.push({
 component:_SortKeyPage2.default,
 params:_extends({},this.props)});
 
+}},{key:'_onRemoveLabel',value:function _onRemoveLabel()
+
+{
+this.props.navigator.push({
+component:_CustomKeyPage2.default,
+params:_extends({},
+this.props,{
+isRemoveKey:true})});
+
+
 }},{key:'render',value:function render()
 
 {var _this2=this;
 return(
-_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:49}},
+_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:59}},
 _react3.default.createElement(_NavigationBar2.default,{
 title:'我的',
-style:{backgroundColor:'#2196f3'},__source:{fileName:_jsxFileName,lineNumber:50}}),
+style:{backgroundColor:'#2196f3'},__source:{fileName:_jsxFileName,lineNumber:60}}),
 
-_react3.default.createElement(_reactNative.Text,{style:styles.text,onPress:function onPress(){return _this2._onSelfLabel();},__source:{fileName:_jsxFileName,lineNumber:54}},'\u81EA\u5B9A\u4E49\u6807\u7B7E'),
-_react3.default.createElement(_reactNative.Text,{style:styles.text,onPress:function onPress(){return _this2._onSortLabel();},__source:{fileName:_jsxFileName,lineNumber:55}},'\u6807\u7B7E\u6392\u5E8F\u9875')));
+_react3.default.createElement(_reactNative.Text,{style:styles.text,onPress:function onPress(){return _this2._onSelfLabel();},__source:{fileName:_jsxFileName,lineNumber:64}},'\u81EA\u5B9A\u4E49\u6807\u7B7E'),
+_react3.default.createElement(_reactNative.Text,{style:styles.text,onPress:function onPress(){return _this2._onSortLabel();},__source:{fileName:_jsxFileName,lineNumber:65}},'\u6807\u7B7E\u6392\u5E8F\u9875'),
+_react3.default.createElement(_reactNative.Text,{style:styles.text,onPress:function onPress(){return _this2._onRemoveLabel();},__source:{fileName:_jsxFileName,lineNumber:66}},'\u6807\u7B7E\u79FB\u9664')));
 
 
 }}]);return Mine;}(_react2.Component));exports.default=Mine;
@@ -80303,6 +80314,7 @@ props));
 _this.state={
 dataArray:[]};
 
+_this.isRemoveKey=_this.props.isRemoveKey?true:false;
 _this.languageDao=new _LanguageDao2.default(_LanguageDao.FLAG_LANGUAGE.flag_key);
 _this.changeValues=[];return _this;
 }_createClass(CustomKeyPage,[{key:'componentDidMount',value:function componentDidMount()
@@ -80347,6 +80359,10 @@ this.props.navigator.pop();
 return;
 }
 
+for(var i=0,len=this.changeValues.length;i<len;i++){
+_ArrayUtils2.default.remove(this.state.dataArray,this.changeValues[i]);
+}
+
 this.languageDao.save(this.state.dataArray);
 this.props.navigator.pop();
 }},{key:'_onClick',value:function _onClick(
@@ -80357,8 +80373,13 @@ this.props.navigator.pop();
 
 
 
+
+
+
 data){
+if(!this.isRemoveKey){
 data.checked=!data.checked;
+}
 _ArrayUtils2.default.updateArray(this.changeValues,data);
 }},{key:'_renderCheckBox',value:function _renderCheckBox(
 
@@ -80372,14 +80393,15 @@ _ArrayUtils2.default.updateArray(this.changeValues,data);
 
 data){var _this3=this;
 var name=data.name;
+var isChecked=this.isRemoveKey?false:data.checked;
 return(
 _react3.default.createElement(_reactNativeCheckBox2.default,{
 style:styles.checkbox,
 onClick:function onClick(){return _this3._onClick(data);},
 leftText:name,
-isChecked:data.checked,
-checkedImage:_react3.default.createElement(_reactNative.Image,{style:styles.image,source:require(435 /* ./images/ic_check_box.png */),__source:{fileName:_jsxFileName,lineNumber:111}}),
-unCheckedImage:_react3.default.createElement(_reactNative.Image,{style:styles.image,source:require(436 /* ./images/ic_check_box_outline_blank.png */),__source:{fileName:_jsxFileName,lineNumber:112}}),__source:{fileName:_jsxFileName,lineNumber:106}}));
+isChecked:isChecked,
+checkedImage:_react3.default.createElement(_reactNative.Image,{style:styles.image,source:require(435 /* ./images/ic_check_box.png */),__source:{fileName:_jsxFileName,lineNumber:122}}),
+unCheckedImage:_react3.default.createElement(_reactNative.Image,{style:styles.image,source:require(436 /* ./images/ic_check_box_outline_blank.png */),__source:{fileName:_jsxFileName,lineNumber:123}}),__source:{fileName:_jsxFileName,lineNumber:117}}));
 
 
 }},{key:'_renderLabel',value:function _renderLabel()
@@ -80405,12 +80427,12 @@ var views=[];
 
 for(var i=0,l=len-2;i<l;i+=2){
 views.push(
-_react3.default.createElement(_reactNative.View,{key:i,__source:{fileName:_jsxFileName,lineNumber:138}},
-_react3.default.createElement(_reactNative.View,{style:styles.labelView,__source:{fileName:_jsxFileName,lineNumber:139}},
+_react3.default.createElement(_reactNative.View,{key:i,__source:{fileName:_jsxFileName,lineNumber:149}},
+_react3.default.createElement(_reactNative.View,{style:styles.labelView,__source:{fileName:_jsxFileName,lineNumber:150}},
 this._renderCheckBox(this.state.dataArray[i]),
 this._renderCheckBox(this.state.dataArray[i+1])),
 
-_react3.default.createElement(_reactNative.View,{style:styles.line,__source:{fileName:_jsxFileName,lineNumber:143}})));
+_react3.default.createElement(_reactNative.View,{style:styles.line,__source:{fileName:_jsxFileName,lineNumber:154}})));
 
 
 }
@@ -80422,12 +80444,12 @@ _react3.default.createElement(_reactNative.View,{style:styles.line,__source:{fil
 
 views.push(
 
-_react3.default.createElement(_reactNative.View,{key:len-1,__source:{fileName:_jsxFileName,lineNumber:155}},
-_react3.default.createElement(_reactNative.View,{style:styles.labelView,__source:{fileName:_jsxFileName,lineNumber:156}},
+_react3.default.createElement(_reactNative.View,{key:len-1,__source:{fileName:_jsxFileName,lineNumber:166}},
+_react3.default.createElement(_reactNative.View,{style:styles.labelView,__source:{fileName:_jsxFileName,lineNumber:167}},
 len%2===0?this._renderCheckBox(this.state.dataArray[len-2]):null,
 this._renderCheckBox(this.state.dataArray[len-1])),
 
-_react3.default.createElement(_reactNative.View,{style:styles.line,__source:{fileName:_jsxFileName,lineNumber:160}})));
+_react3.default.createElement(_reactNative.View,{style:styles.line,__source:{fileName:_jsxFileName,lineNumber:171}})));
 
 
 return views;
@@ -80467,22 +80489,24 @@ onPress:function onPress(){_this4._onSave();}}]);
 }},{key:'render',value:function render()
 
 {var _this5=this;
+var title=this.isRemoveKey?'标签移除':'Custom Key';
+var rightButtonTitle=this.isRemoveKey?'移除':'保存';
 var rightButton=
-_react3.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this5._onSave();},__source:{fileName:_jsxFileName,lineNumber:201}},
-_react3.default.createElement(_reactNative.View,{style:styles.save,__source:{fileName:_jsxFileName,lineNumber:202}},
-_react3.default.createElement(_reactNative.Text,{style:styles.saveText,__source:{fileName:_jsxFileName,lineNumber:203}},'\u4FDD\u5B58')));
+_react3.default.createElement(_reactNative.TouchableOpacity,{onPress:function onPress(){return _this5._onSave();},__source:{fileName:_jsxFileName,lineNumber:214}},
+_react3.default.createElement(_reactNative.View,{style:styles.save,__source:{fileName:_jsxFileName,lineNumber:215}},
+_react3.default.createElement(_reactNative.Text,{style:styles.saveText,__source:{fileName:_jsxFileName,lineNumber:216}},rightButtonTitle)));
 
 
 
 return(
-_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:208}},
+_react3.default.createElement(_reactNative.View,{style:styles.container,__source:{fileName:_jsxFileName,lineNumber:221}},
 _react3.default.createElement(_NavigationBar2.default,{
-title:'Custom Key',
+title:title,
 style:{backgroundColor:'#2196f3'},
 leftButton:_ViewUtils2.default.getLeftButton(function(){return _this5._onBack();}),
-rightButton:rightButton,__source:{fileName:_jsxFileName,lineNumber:209}}),
+rightButton:rightButton,__source:{fileName:_jsxFileName,lineNumber:222}}),
 
-_react3.default.createElement(_reactNative.ScrollView,{__source:{fileName:_jsxFileName,lineNumber:215}},
+_react3.default.createElement(_reactNative.ScrollView,{__source:{fileName:_jsxFileName,lineNumber:228}},
 this._renderLabel())));
 
 
@@ -80744,6 +80768,28 @@ return false;
 }
 }
 return true;
+}},{key:"remove",value:function remove(
+
+
+
+
+
+
+
+
+
+
+arr,item){
+
+if(!arr){
+return;
+}
+for(var i=0,len=arr.length;i<len;i++){
+
+if(item===arr[i]){
+arr.splice(i,1);
+}
+}
 }}]);return ArrayUtils;}();exports.default=ArrayUtils;
 }, 434, null, "HotCodeGithub/src/utils/ArrayUtils.js");
 __d(/* HotCodeGithub/src/pages/Mine/images/ic_check_box.png */function(global, require, module, exports) {module.exports = require(171 /* react-native/Libraries/Image/AssetRegistry */).registerAsset({"__packager_asset":true,"httpServerLocation":"/assets/src/pages/Mine/images","width":24,"height":24,"scales":[1,2,3],"hash":"5d3b135d5214e780d63b968d2ade7240","name":"ic_check_box","type":"png"});

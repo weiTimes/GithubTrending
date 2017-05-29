@@ -47,10 +47,7 @@ export default class Mine extends Component {
     _onRemoveLabel() {
         this.props.navigator.push({
             component: CustomKeyPage,
-            params: {
-                ...this.props,
-                isRemoveKey: true // 用来标识将要进行的是移除标签操作
-            }
+            params: { ...this.props, isRemoveKey: true }
         });
     }
 

@@ -44,16 +44,6 @@ export default class Mine extends Component {
         });
     }
 
-    _onRemoveLabel() {
-        this.props.navigator.push({
-            component: CustomKeyPage,
-            params: {
-                ...this.props,
-                isRemoveKey: true // 用来标识将要进行的是移除标签操作
-            }
-        });
-    }
-
     render() {
         return (
             <View style={styles.container}>
@@ -63,7 +53,7 @@ export default class Mine extends Component {
                 />
                 <Text style={styles.text} onPress={() => this._onSelfLabel()}>自定义标签</Text>
                 <Text style={styles.text} onPress={() => this._onSortLabel()}>标签排序页</Text>
-                <Text style={styles.text} onPress={() => this._onRemoveLabel()}>标签移除</Text>
+                <Text style={styles.text} onPress={() => this._onSortLabel()}>标签移出</Text>
             </View>
         );
     }
