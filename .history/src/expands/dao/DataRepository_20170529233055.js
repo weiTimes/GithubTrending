@@ -19,7 +19,7 @@ export default class DataRepository {
      * 
      * @memberof DataRepository
      */
-    fetchRepository(url) {
+    fetchRepository() {
         return new Promise((resolve, reject) => {
             // 获取本地的数据
             this.fetchLocaleRepository(url)
@@ -61,7 +61,7 @@ export default class DataRepository {
             AsyncStorage.getItem(url, (error, result) => {
                 if (!error) {
                     try {
-                        resolve(JSON.parse(result)); // 解析并返回json类型的数据
+                        resolve(JSON.parse(result)); // 解析并返回数组类型的数据
                     } catch (error) {
                         reject(error);
                     }
@@ -77,12 +77,11 @@ export default class DataRepository {
      * 导出给用户调用的
      * 
      * @param {any} time 数据的创建时间 时间戳
-     * @returns 时间过时 => false 
+     * @returns 
      * 
      * @memberof DataRepository
      */
     checkDate(time) {
-        return false;
         let oldDate = new Date(); // 本地数据的创建时间
         let nowDate = new Date(); // 当前时间
         oldDate.setTime(time);

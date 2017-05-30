@@ -2,7 +2,7 @@
  * @Author: yewei 
  * @Date: 2017-05-18 22:39:00 
  * @Last Modified by: yewei
- * @Last Modified time: 2017-05-30 10:37:49
+ * @Last Modified time: 2017-05-21 15:18:31
  * 
  * 首页
  */
@@ -25,7 +25,6 @@ import Toast, { DURATION } from 'react-native-easy-toast';
 import PopularPage from './PopularPage';
 import MinePage from './Mine/MinePage';
 import AsyncStorageComponent from '../../demos/AsyncStorageComponent';
-import WebViewComponent from '../../demos/WebViewComponent';
 export default class HomePage extends Component {
     constructor(props) {
         super(props);
@@ -35,19 +34,14 @@ export default class HomePage extends Component {
     }
 
     componentDidMount() {
-        // 监听
         this.listener = DeviceEventEmitter.addListener('showToast', (text) => {
             this.toast.show(text, DURATION.LENGTH_LONG);
         });
     }
 
-    componentWillUnmount() {
-        this.listener && this.listener.remove();
-    }
-
     render() {
         return (
-            <View style={styles.container}>
+            <View>
                 <TabNavigator>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'tb_popular'} // 是否被选中
@@ -76,7 +70,7 @@ export default class HomePage extends Component {
                         renderSelectedIcon={() => <Image style={[styles.tabicon, styles.ontabicon]} source={require('../../res/images/ic_polular.png')} />} // 选中时的图标，选中时给图标着为红色
                         badgeText="1"
                         onPress={() => this.setState({ selectedTab: 'tb_favorite' })}>
-                        <WebViewComponent />
+                        <View style={styles.page1}></View>
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'bg_my'}

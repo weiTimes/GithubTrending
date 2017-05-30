@@ -19,7 +19,7 @@ export default class DataRepository {
      * 
      * @memberof DataRepository
      */
-    fetchRepository(url) {
+    fetchRepository() {
         return new Promise((resolve, reject) => {
             // 获取本地的数据
             this.fetchLocaleRepository(url)
@@ -61,7 +61,7 @@ export default class DataRepository {
             AsyncStorage.getItem(url, (error, result) => {
                 if (!error) {
                     try {
-                        resolve(JSON.parse(result)); // 解析并返回json类型的数据
+                        resolve(JSON.parse(result));
                     } catch (error) {
                         reject(error);
                     }
@@ -77,12 +77,11 @@ export default class DataRepository {
      * 导出给用户调用的
      * 
      * @param {any} time 数据的创建时间 时间戳
-     * @returns 时间过时 => false 
+     * @returns 
      * 
      * @memberof DataRepository
      */
     checkDate(time) {
-        return false;
         let oldDate = new Date(); // 本地数据的创建时间
         let nowDate = new Date(); // 当前时间
         oldDate.setTime(time);
@@ -116,9 +115,10 @@ export default class DataRepository {
         // 包装数据，加入时间戳，以便判断数据是否过期
         let wrapData = {
             items: items,
-            update_date: new Date().getTime() // 时间戳
+            update_date: new Date().getTime()
         };
-        AsyncStorage.setItem(url, JSON.stringify(wrapData), callback); // JSON.stringify 序列化
+        AsyncStorage.setItem(url, JSON.stringify(wrapData), callback);
+
     }
     /**
      * 抓取网络数据
@@ -137,12 +137,13 @@ export default class DataRepository {
                         reject(new Error('responseData is null'));
                         return;
                     }
-                    resolve(result.items); // 返回数据中的数组
+                    resolve(result.items); // 取出数据中的数组
                     this.saveRepository(url, result.items); // 将数组保存到数据库中
+
                 })
                 .catch(error => {
                     reject(error);
-                });
+                })
         });
     }
 }

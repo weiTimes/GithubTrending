@@ -16,8 +16,7 @@ import {
     Text,
     View,
     ListView,
-    RefreshControl,
-    DeviceEventEmitter
+    RefreshControl
 } from 'react-native';
 
 import DataRepository from '../expands/dao/DataRepository'; // 数据模块层
@@ -73,6 +72,9 @@ export default class PopularTab extends Component {
             .then(result => {
                 // 将拿到的数据存到state中
                 let items = result && result.items ? result.items : (result ? result : []); // 被包装过的数据(result.items 存在数据库中的) 没有被封装过的，从网络中获得的(result)
+                console.log('加载数据');
+
+                console.log(items);
 
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(items), // 数组
@@ -81,23 +83,20 @@ export default class PopularTab extends Component {
                 // 如果时间过期
                 // 先渲染出旧的数据，如果数据过期，则加载新的数据
                 if (result && result.update_date && !this.dataRepository.checkDate(result.update_date)) {
-                    // DeviceEventEmitter.emit('showToast', '数据过时');
                     return this.dataRepository.fetchNextRepository(url);
-                } else {
-                    // DeviceEventEmitter.emit('showToast', '显示缓存数据');
                 }
             })
-            .then(items => { // 过期后拿到新的数据
-                if (!items || items.length === 0) {
+            .then(items => { // 拿到新的数据
+                if (!items && items.length === 0) {
                     return;
                 }
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(items), // 数组
                 });
-                // DeviceEventEmitter.emit('showToast', '显示网络数据');
-
             })
             .catch((error) => {
+                console.log(error);
+
                 this.setState({
                     result: JSON.stringify(error)
                 });

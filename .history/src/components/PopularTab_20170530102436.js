@@ -81,20 +81,21 @@ export default class PopularTab extends Component {
                 // 如果时间过期
                 // 先渲染出旧的数据，如果数据过期，则加载新的数据
                 if (result && result.update_date && !this.dataRepository.checkDate(result.update_date)) {
-                    // DeviceEventEmitter.emit('showToast', '数据过时');
+                    DeviceEventEmitter.emit('showToast', '数据过时');
                     return this.dataRepository.fetchNextRepository(url);
                 } else {
-                    // DeviceEventEmitter.emit('showToast', '显示缓存数据');
+                    DeviceEventEmitter.emit('showToast', '显示缓存数据');
                 }
             })
             .then(items => { // 过期后拿到新的数据
+                alert('hi');
                 if (!items || items.length === 0) {
                     return;
                 }
                 this.setState({
                     dataSource: this.state.dataSource.cloneWithRows(items), // 数组
                 });
-                // DeviceEventEmitter.emit('showToast', '显示网络数据');
+                DeviceEventEmitter.emit('showToast', '显示网络数据');
 
             })
             .catch((error) => {

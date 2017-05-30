@@ -82,7 +82,6 @@ export default class DataRepository {
      * @memberof DataRepository
      */
     checkDate(time) {
-        return false;
         let oldDate = new Date(); // 本地数据的创建时间
         let nowDate = new Date(); // 当前时间
         oldDate.setTime(time);
